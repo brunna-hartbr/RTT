@@ -24,7 +24,7 @@ Purpose : Implementation of SEGGER real-time transfer which allows
 #ifndef SEGGER_RTT_H
 #define SEGGER_RTT_H
 
-#include "SEGGER_RTT_Conf.h"
+#include "SEGGER_RTT_ConfDefaults.h"
 
 /*********************************************************************
 *
