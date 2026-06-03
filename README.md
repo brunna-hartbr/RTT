@@ -14,7 +14,9 @@ For more information refer to
 This package contains the RTT Target Sources.
 It can be used directly,
 either by including the [Git Repository](https://www.github.com/SEGGERMicro/RTT) as a submodule,
-or by [Download](https://github.com/SEGGERMicro/RTT/releases/latest) of the latest package.
+or by [Download](https://github.com/SEGGERMicro/RTT/releases/latest) of the latest package,
+or as an [CMSIS-Pack](https://www.keil.arm.com/packs/?vendor=segger) in [CMSIS](https://www.keil.arm.com/cmsis)
+development tools.
 
 ### General Usage and Configuration
 
@@ -49,3 +51,13 @@ Some examples can be run as bare-metal applications, some examples require addit
 - `Main_RTT_MenuApp.c`         - Example application to demonstrate RTT bi-directional functionality.
 - `Main_RTT_PrintfTest.c`      - Example application to test RTT's simple printf implementation.
 - `Main_RTT_SpeedTestApp.c`    - Example application to measure RTT performance. (Requires embOS)
+
+**NOTE:** The examples are not included in the CMSIS-Pack.
+
+### CMSIS-Pack
+
+The CMSIS-Pack enables easy integration of RTT into CMSIS-based projects.
+
+To use RTT in a *csolution project* add `pack: SEGGER::RTT` and `component: SEGGER:RTT`.
+The [RTE directory](https://open-cmsis-pack.github.io/cmsis-toolbox/build-overview/#rte-directory-structure)
+is the project's config directory and contains the local copy of `SEGGER_RTT_Conf.h` for additional configuration.
