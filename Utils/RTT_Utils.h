@@ -63,7 +63,7 @@ void RTT_Logs_Test(void);
 #define RTT_LOG_VAR(enable, name, fmt, val) do { \
 	if (IS_LOG_ENABLED(enable)) \
 	{ \
-		SEGGER_RTT_printf(0, "%s = " fmt "\n", name, val); \
+		SEGGER_RTT_printf(0, "%s " fmt "\n", name, val); \
 	} \
 } while(0)
 
