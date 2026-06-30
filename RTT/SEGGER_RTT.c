@@ -79,11 +79,11 @@ Additional information:
 #endif
 
 #ifndef   SEGGER_RTT_MAX_NUM_UP_BUFFERS
-  #define SEGGER_RTT_MAX_NUM_UP_BUFFERS                    2    // Number of up-buffers (T->H) available on this target
+  #define SEGGER_RTT_MAX_NUM_UP_BUFFERS                    1    // Number of up-buffers (T->H) available on this target
 #endif
 
 #ifndef   SEGGER_RTT_MAX_NUM_DOWN_BUFFERS
-  #define SEGGER_RTT_MAX_NUM_DOWN_BUFFERS                  2    // Number of down-buffers (H->T) available on this target
+  #define SEGGER_RTT_MAX_NUM_DOWN_BUFFERS                  1    // Number of down-buffers (H->T) available on this target
 #endif
 
 #ifndef   SEGGER_RTT_ALIGNMENT
@@ -221,7 +221,7 @@ static const unsigned char _aTerminalId[16] = { '0', '1', '2', '3', '4', '5', '6
 //
 #if SEGGER_RTT_CPU_CACHE_LINE_SIZE
   #if ((defined __GNUC__) || (defined __clang__))
-    SEGGER_RTT_CB _SEGGER_RTT                                                             __attribute__ ((aligned (SEGGER_RTT_CPU_CACHE_LINE_SIZE)));
+    SEGGER_RTT_CB _SEGGER_RTT                                                             __attribute__((section(".bss")));
     static char   _acUpBuffer  [SEGGER_RTT__ROUND_UP_2_CACHE_LINE_SIZE(BUFFER_SIZE_UP)]   __attribute__ ((aligned (SEGGER_RTT_CPU_CACHE_LINE_SIZE)));
     static char   _acDownBuffer[SEGGER_RTT__ROUND_UP_2_CACHE_LINE_SIZE(BUFFER_SIZE_DOWN)] __attribute__ ((aligned (SEGGER_RTT_CPU_CACHE_LINE_SIZE)));
   #elif (defined __ICCARM__)

@@ -46,7 +46,7 @@ Purpose : Default configuration for RTT.
 *      Up-buffer channel 1: SystemView.
 */
 #ifndef   SEGGER_RTT_MAX_NUM_UP_BUFFERS
-  #define SEGGER_RTT_MAX_NUM_UP_BUFFERS             (3)
+  #define SEGGER_RTT_MAX_NUM_UP_BUFFERS             (1)
 #endif
 /*********************************************************************
 *
@@ -63,7 +63,7 @@ Purpose : Default configuration for RTT.
 *    The number of up- and down-buffers may differ.
 */
 #ifndef   SEGGER_RTT_MAX_NUM_DOWN_BUFFERS
-  #define SEGGER_RTT_MAX_NUM_DOWN_BUFFERS           (3)
+  #define SEGGER_RTT_MAX_NUM_DOWN_BUFFERS           (1)
 #endif
 
 /*********************************************************************
