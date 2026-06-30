@@ -15,7 +15,7 @@
 #include "lte_com.h"
 #include "lteContext.h"
 #include "modemStateHandler.h"
-#include "CommandCircularBuffer.h
+#include "CommandCircularBuffer.h"
 
 extern const char* IoTStateNames[IOTSTATE_NUMBER_STATES];
 extern const char* ModemStatesNames[MODEM_STATES_MAX];
