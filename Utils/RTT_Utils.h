@@ -1,10 +1,13 @@
 #ifndef RTT_UTILS_H
 #define RTT_UTILS_H
 
-#define LTE_MODULE	1
-#define LORA_RADIO	0
-#define CPU			0
+/*
+these macros should be defined as symbols depending on the project using them
 
+LTE_MODULE=1
+LORA_RADIO=1
+CPU=1
+*/
 #include <stdio.h>
 #include <stdbool.h>
 
