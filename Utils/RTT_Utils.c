@@ -126,3 +126,17 @@ void RTT_Logs_Test(void)
 	
 	return;
 }
+
+extern volatile uint32_t tickBase;
+
+void RTT_Debug_Check(void)
+{
+	static bool lastDebugAttached = false;
+	bool const newDebugState = isDebugAttached();
+	if(newDebugState != lastDebugAttached)
+	{
+		tickBase = GetCurrentUTCTimeStamp();
+		SEGGER_RTT_printf(0, "%u DBG Changed: %u\n", tickBase, newDebugState);
+		lastDebugAttached = newDebugState;
+	}
+}
