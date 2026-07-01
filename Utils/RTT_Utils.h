@@ -24,12 +24,15 @@ extern const char* IoTStateNames[IOTSTATE_NUMBER_STATES];
 extern const char* ModemStatesNames[MODEM_STATES_MAX];
 #endif
 extern bool g_rtt_enabled;
+extern bool g_debug_present;
 
 // Public functions
 void RTT_Utils_init(void);
 void RTT_Utils_set_enabled(bool enable);
 void RTT_Utils_toggle(void);
 void RTT_Logs_Test(void);
+bool isDebugAttached(void);
+void RTT_Debug_Check(uint32_t timestamp);
 
 #ifdef RTT_LOGS
 
@@ -50,7 +53,8 @@ void RTT_Logs_Test(void);
 #ifdef RTT_LOGS
 
 // Internal macro for checking if logs are enabled (compile-time AND runtime)
-#define IS_LOG_ENABLED(compile_flag) ((compile_flag) && (g_rtt_enabled))
+#define IS_LOG_ENABLED(compile_flag) \
+((compile_flag) && (g_rtt_enabled) && (g_debug_present))
 
 
 // RTT_LOG_MSG(1, "Sys Start"); - only text
@@ -232,6 +236,5 @@ extern const LTECmdConfig_t LTECmds[LTE_CMD_NUMBER];
 
 #endif
 
-bool isDebugAttached(void);
 
 #endif // RTT_UTILS_H

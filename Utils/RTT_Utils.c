@@ -60,6 +60,7 @@ const char* ModemStatesNames[MODEM_STATES_MAX] =
 #endif
 
 bool g_rtt_enabled = false;
+bool g_debug_present = false;
 
 void RTT_Utils_init(void)
 {
@@ -75,7 +76,7 @@ void RTT_Utils_init(void)
 
 #if CPU_SAML21
 #include "hri/hri_dsu_l21.h"
-#include "saml21e18b.h"
+#include "saml21g18b.h"
 #elif CPU_SAME53
 #include "hri/hri_dsu_e53.h"
 #include "same53j20a.h"
@@ -86,8 +87,6 @@ void RTT_Utils_init(void)
 */
 bool isDebugAttached(void) 
 {
-	//return hri_dsu_get_STATUSB_DBGPRES_bit(DSU);
-	//return hri_dsu_get_STATUSB_DBGPRES_bit(DSU);
 	return DSU->STATUSB.bit.DBGPRES;
 }
 
@@ -127,16 +126,23 @@ void RTT_Logs_Test(void)
 	return;
 }
 
-extern volatile uint32_t tickBase;
+/*
+This function CAN NOT be called in low-power mode
+*/
 
-void RTT_Debug_Check(void)
+void RTT_Debug_Check(uint32_t timestamp)
 {
-	static bool lastDebugAttached = false;
-	bool const newDebugState = isDebugAttached();
-	if(newDebugState != lastDebugAttached)
+	static bool
+	lastDebugAttached = false;
+
+	bool const
+	newDebugState = isDebugAttached();
+
+	g_debug_present = newDebugState;
+
+	if (newDebugState != lastDebugAttached)
 	{
-		tickBase = GetCurrentUTCTimeStamp();
-		SEGGER_RTT_printf(0, "%u DBG Changed: %u\n", tickBase, newDebugState);
+		SEGGER_RTT_printf(0, "%u DBG Changed: %u\n",(unsigned)timestamp, (unsigned)newDebugState);
 		lastDebugAttached = newDebugState;
 	}
 }
