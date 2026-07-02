@@ -40,6 +40,7 @@ void RTT_Debug_Check(uint32_t timestamp);
 #define LTE_LOGS_ENABLE             1
 #define MODEM_STATES_LOGS_ENABLE    1
 #define RTT_TIME_LOGS_ENABLE		1
+#define CPU_LOGS_ENABLE				1
 
 #else
 
@@ -47,6 +48,7 @@ void RTT_Debug_Check(uint32_t timestamp);
 #define LTE_LOGS_ENABLE             0
 #define MODEM_STATES_LOGS_ENABLE    0
 #define RTT_TIME_LOGS_ENABLE		0
+#define CPU_LOGS_ENABLE				0
 
 #endif
 
